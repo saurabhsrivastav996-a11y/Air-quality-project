@@ -56,9 +56,3 @@ The script opens separate figures for the station time series, the London-versus
 - [London station](step_4_London.png)
 - [London DataFrame example](step_41.png)
 - [Station distributions](Step_5.png)
-
-## Attribution
-
-This project is based on the air quality visualization project by [Natalia Tsvietukhina](https://github.com/Tsvietukhina/air-quality-viz). The original project does not include a license file, so this repository does not claim a license for the upstream code, data, or figures. Confirm reuse rights before redistributing those materials.
-
-This repository is maintained at [saurabhsrivastav996-a11y/Air-quality-project](https://github.com/saurabhsrivastav996-a11y/Air-quality-project).
