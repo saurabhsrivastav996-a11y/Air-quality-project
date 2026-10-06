@@ -1,28 +1,31 @@
-import pandas as pd
+from pathlib import Path
+
 import matplotlib.pyplot as plt
+import pandas as pd
 
-air_quality = pd.read_csv('air_quality_no2.csv', index_col=0, parse_dates=True)
-#air_quality = pd.read_csv('air_quality_no2.csv', index_col=1)
 
-#air_quality.head()
-#Step 1-I want a quick visual check of the data.
-air_quality.plot()
+DATA_FILE = Path(__file__).with_name("air_quality_no2.csv")
 
-#Step 2-I want to plot only the columns of the data table with the data from Paris.
-air_quality["station_paris"].plot()
 
-#Step 3-I want to visually compare the values measured in London versus Paris.
-air_quality.plot.scatter(x="station_london", y="station_paris", alpha=0.5)
+def main():
+    air_quality = pd.read_csv(DATA_FILE, index_col=0, parse_dates=True)
 
-#Step 4-I want to plot only the columns of the data table with the data from London.
-air_quality["station_london"].plot()
+    # Quick visual check of all station measurements.
+    air_quality.plot()
 
-#Step 4.1
-lond=air_quality[["station_london"]]
-lond.plot()
+    # Inspect individual stations and compare London with Paris.
+    air_quality["station_paris"].plot()
+    air_quality.plot.scatter(x="station_london", y="station_paris", alpha=0.5)
+    air_quality["station_london"].plot()
 
-#Step 5-  graphical representation showing the median, quartiles, and range of air quality indices
-air_quality.plot(kind='box') 
-air_quality.plot.box()
+    # Demonstrate plotting the London column as a one-column DataFrame.
+    air_quality[["station_london"]].plot()
 
-plt.show()
+    # Summarize each station's distribution once.
+    air_quality.plot.box()
+
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()
